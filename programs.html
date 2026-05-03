@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Programs | Menofia University</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="websitelogo.jfif.jpeg" type="image/png">
+</head>
+<body>
+
+  <header>
+    <h1>Menofia University</h1>
+    <p>Explore Our Academic Programs</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="programs.html">Programs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+
+    <section class="program">
+      <h3>Computer Science</h3>
+      <p>Learn programming, software development, and problem-solving in our 4-year degree program.</p>
+    </section>
+
+    <section class="program">
+      <h3>Business Administration</h3>
+      <p>Gain leadership, finance, and marketing skills in this versatile 3-year diploma course.</p>
+    </section>
+
+    <section class="program">
+      <h3>Graphic Design</h3>
+      <p>Explore visual communication, branding, and digital design in a hands-on 2-year program.</p>
+    </section>
+
+    <section class="program">
+      <h3>Modeling &amp; Simulation</h3>
+      <p>Study how to create digital models and simulate real-world systems for research, engineering, and gaming.</p>
+    </section>
+
+    <section class="program">
+      <h3>Machine Learning</h3>
+      <p>Learn algorithms that allow systems to learn from data, focusing on AI, data science, and predictive analysis.</p>
+    </section>
+
+    <section class="program">
+      <h3>Network Engineering</h3>
+      <p>Design, implement, and maintain networks and communication systems essential to modern IT infrastructure.</p>
+    </section>
+
+    <section class="program">
+      <h3>Data Analysis</h3>
+      <p>Learn how to collect, interpret, and visualize data to make informed decisions in business, science, and tech.</p>
+    </section>
+
+    <section class="program">
+      <h3>System Analysis</h3>
+      <p>Understand how to assess and design efficient information systems by analyzing technical and business requirements.</p>
+    </section>
+
+    <section class="program-roadmap">
+      <h3>Program Roadmap: Data Analysis</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Semester</th>
+            <th>Courses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Semester 1</td>
+            <td>Introduction to Data, Statistics I, Programming Basics</td>
+          </tr>
+          <tr>
+            <td>Semester 2</td>
+            <td>Data Visualization, Database Systems, Linear Algebra</td>
+          </tr>
+          <tr>
+            <td>Semester 3</td>
+            <td>Python for Data Analysis, Regression Models, Big Data Fundamentals</td>
+          </tr>
+          <tr>
+            <td>Semester 4</td>
+            <td>Machine Learning Basics, Data Ethics, Capstone Project</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Faculty of Computer Science and Information Technology</p>
+    <p><a href="https://www.google.com/maps/dir//Gamal+Abd+El-Nasir,+Qism+Shebeen+El-Kom,+Shibin+el+Kom,+Menofia+Governorate+6131567/@30.5655505,30.9306809,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x14f7d6eb70a91047:0xc353387ed2f37809!2m2!1d31.0130822!2d30.5655764?entry=ttu&amp;g_ep=EgoyMDI1MDUwNi4wIKXMDSoASAFQAw%3D%3D">Menoufia University, Shebin El-Kom, Egypt</a></p>
+    <p>Email: fci@menofia.edu.eg | Phone: +20 10 21593499</p>
+    <p>© 2024 Menoufia University. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // =============================================
+    // 1. ACTIVE NAV LINK
+    // Highlights the current page link in the nav
+    // =============================================
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(function(link) {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    // =============================================
+    // 2. SMOOTH SCROLL
+    // Smooth scrolling when clicking any anchor link
+    // =============================================
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

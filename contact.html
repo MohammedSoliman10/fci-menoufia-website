@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Menoufia University</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="websitelogo.jfif.jpeg" type="image/png">
+</head>
+<body>
+
+  <header>
+    <h1>Menoufia University</h1>
+    <p>Faculty of Computer Science &amp; Information Technology</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="programs.html">Programs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <div class="contact-container">
+      <div class="map-section">
+        <h2>Our Location</h2>
+        <div class="map-placeholder">
+          <img src="Location.PNG" alt="Our Location Map" style="max-width: 100%; height: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Address:</strong><br>
+        Gamal Abd El-Nasir, Qism Shebeen El-Kom<br>
+        Shebin El-Kom, Menoufia Governorate<br>
+        Egypt</p>
+
+        <p><strong>Email:</strong> contact@fci.menofia.edu.eg</p>
+        <p><strong>Phone:</strong> 0482222170</p>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <p id="form-success" style="display:none; color:green; font-weight:bold;">✓ Your message has been sent successfully!</p>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your Full Name">
+          <span class="error-msg" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email Address:</label>
+          <input type="email" id="email" name="email" placeholder="Your Email">
+          <span class="error-msg" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
+          <span class="error-msg" id="messageError"></span>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>Faculty of Computer Science and Information Technology</p>
+    <p>Menoufia University, Shebin El-Kom, Egypt</p>
+    <p>Email: contact@fci.menofia.edu.eg | Phone: 0482222170</p>
+    <p>© 2025 Menoufia University. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // =============================================
+    // 1. ACTIVE NAV LINK
+    // Highlights the current page link in the nav
+    // =============================================
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(function(link) {
+      const linkPage = link.getAttribute('href');
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    // =============================================
+    // 2. SMOOTH SCROLL
+    // Smooth scrolling when clicking any nav link
+    // =============================================
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        // Only apply smooth scroll if it's a same-page anchor
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // =============================================
+    // 3. FORM VALIDATION
+    // Checks all fields before allowing submit
+    // =============================================
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('name');
+      const email   = document.getElementById('email');
+      const message = document.getElementById('message');
+
+      const nameError    = document.getElementById('nameError');
+      const emailError   = document.getElementById('emailError');
+      const messageError = document.getElementById('messageError');
+      const success      = document.getElementById('form-success');
+
+      // Clear previous errors
+      nameError.textContent    = '';
+      emailError.textContent   = '';
+      messageError.textContent = '';
+      name.style.borderColor    = '#ccc';
+      email.style.borderColor   = '#ccc';
+      message.style.borderColor = '#ccc';
+      success.style.display     = 'none';
+
+      let valid = true;
+
+      // Check name
+      if (name.value.trim() === '') {
+        nameError.textContent  = 'Please enter your name.';
+        name.style.borderColor = 'red';
+        valid = false;
+      }
+
+      // Check email
+      if (email.value.trim() === '') {
+        emailError.textContent  = 'Please enter your email address.';
+        email.style.borderColor = 'red';
+        valid = false;
+      } else if (!email.value.includes('@') || !email.value.includes('.')) {
+        emailError.textContent  = 'Please enter a valid email address.';
+        email.style.borderColor = 'red';
+        valid = false;
+      }
+
+      // Check message
+      if (message.value.trim() === '') {
+        messageError.textContent  = 'Please enter your message.';
+        message.style.borderColor = 'red';
+        valid = false;
+      }
+
+      // If all valid, show success message
+      if (valid) {
+        form.reset();
+        success.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
